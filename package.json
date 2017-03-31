@@ -1,0 +1,29 @@
+{
+  "name": "dispatch-manager",
+  "version": "1.0.0",
+  "description": "Module that uses flux's dispatcher for making events and dispatchers easier to work with in your application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/one20/dispatch-manager.git"
+  },
+  "keywords": [
+    "dispatcher",
+    "event",
+    "flux",
+    "carlo",
+    "alducente"
+  ],
+  "author": "Carlo Alducente <carlo@alducente.com> (https://alducente.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/one20/dispatch-manager/issues"
+  },
+  "homepage": "https://github.com/one20/dispatch-manager#readme",
+  "dependencies": {
+    "flux": "^3.1.2"
+  }
+}
