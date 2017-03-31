@@ -1,4 +1,4 @@
-import { Dispatcher } from 'flux';
+var Dispatcher = require( 'flux' ).Dispatcher;
 
 let instance = null;
 
