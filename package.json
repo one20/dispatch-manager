@@ -1,6 +1,6 @@
 {
   "name": "dispatch-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module that uses flux's dispatcher for making events and dispatchers easier to work with in your application.",
   "main": "index.js",
   "scripts": {
