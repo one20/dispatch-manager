@@ -10,18 +10,18 @@ class DispatchManager {
         this.dispatchers = {};
     }
     /*
-    * Registers a callback for a specific action. Creates a new dispatcher 
+    * Registers a listener for a specific action. Creates a new dispatcher 
     * instance if one doesn't exist for the action already.
     * Returns token from flux dispatcher.
     */
-    register(action, callback) {
+    register(action, listener) {
         var dispatcher;
         if (this.dispatchers.hasOwnProperty(action)) {
             dispatcher = this.dispatchers[action];
         } else {
             dispatcher = this.dispatchers[action] = new Dispatcher();
         }
-        return dispatcher.register(callback);
+        return dispatcher.register(listener);
     }
 
     /*
