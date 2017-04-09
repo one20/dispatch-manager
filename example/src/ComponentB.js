@@ -1,5 +1,5 @@
 const React = require('react');
-const DispatchManager = require('dispatch-manager');
+const DispatchManager = require('./../../index');
 const ComponentC = require('./ComponentC');
 
 class ComponentB extends React.Component {

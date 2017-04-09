@@ -3,7 +3,7 @@
 * Creates a flux dispatcher instance for every action type registered.
 */
 
-var Dispatcher = require( 'flux' ).Dispatcher;
+var Dispatcher = require('flux').Dispatcher;
 
 class DispatchManager {
     constructor() {
@@ -15,12 +15,12 @@ class DispatchManager {
     * Returns token from flux dispatcher.
     */
     register(action, listener) {
-        var dispatcher;
-        if (this.dispatchers.hasOwnProperty(action)) {
-            dispatcher = this.dispatchers[action];
-        } else {
+        var dispatcher = this.getDispatcher(action);
+        if (!dispatcher) {
             dispatcher = this.dispatchers[action] = new Dispatcher();
+            dispatcher.callbackCount = 0;
         }
+        dispatcher.callbackCount++;
         return dispatcher.register(listener);
     }
 
@@ -29,9 +29,13 @@ class DispatchManager {
     * unregisters a listener based on token.
     */
     unregister(action, token) {
-        var dispatcher = this.dispatchers[action];
-        if (dispatcher) {
+        var dispatcher;
+        if (dispatcher = this.getDispatcher(action)) {
             dispatcher.unregister(token);
+            dispatcher.callbackCount--;
+            if(!dispatcher.callbackCount){
+                this.dispatchers[action] = null;
+            }
             return true;
         }
         return false;
@@ -42,10 +46,20 @@ class DispatchManager {
     * and triggers all associated listeners.
     */
     dispatch(action, payload) {
-        if (this.dispatchers.hasOwnProperty(action)) {
-            var dispatcher = this.dispatchers[action];
+        var dispatcher;
+        if (dispatcher = this.getDispatcher(action)) {
             dispatcher.dispatch(payload);
             return true;
+        }
+        return false;
+    }
+
+    /*
+    * Returns a dispatcher instance based on action.
+    */
+    getDispatcher(action) {
+        if (this.dispatchers.hasOwnProperty(action)) {
+            return this.dispatchers[action];
         }
         return false;
     }

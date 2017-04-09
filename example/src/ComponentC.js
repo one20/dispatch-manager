@@ -1,5 +1,5 @@
 const React = require('react');
-const DispatchManager = require('dispatch-manager');
+const DispatchManager = require('./../../index');
 
 class ComponentC extends React.Component {
     onButtonClick() {

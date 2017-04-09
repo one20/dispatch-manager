@@ -47,6 +47,10 @@ DispatchManager.dispatch('some_action', { hello: 'world' });
 | :---------------------------------------------------------------------------- |
 | Triggers all listeners associated with the specified action. Optional payload as a second argument, accessed by the listener as the first parameter.    |
 
+| **getDispatcher**( action:```string``` ):```Dispatcher```   |
+| :---------------------------------------------------------------------------- |
+| Returns the dispatcher object assigned to the specified action. Returns ```false``` if it doesn't exist.   |
+
 ## Example
 *(Note: There is a working example that can be found in the 'example' folder. It was created using [create-react-app](https://github.com/facebookincubator/create-react-app), just run `npm start` within the folder.)*
 
